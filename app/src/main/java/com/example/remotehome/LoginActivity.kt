@@ -24,6 +24,10 @@ class LoginActivity : AppCompatActivity() {
         password = findViewById(R.id.password)
 
         auth = FirebaseAuth.getInstance()
+
+        if(auth.currentUser != null){ //Si ya esta loggeado, transito al main directamente
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
 
@@ -39,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
                     if(task.isSuccessful){
                         startActivity(Intent(this, MainActivity::class.java))
                     } else {
-                        Toast.makeText(this, "Error en la autenticación", Toast.LENGTH_SHORT)
+                        Toast.makeText(this, "Error en la autenticacion", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
