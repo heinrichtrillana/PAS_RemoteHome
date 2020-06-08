@@ -22,9 +22,7 @@ class LivingRoomFragment : Fragment() {
         livingRoomViewModel =
             ViewModelProviders.of(this).get(LivingRoomViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_livingroom, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
         livingRoomViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
         })
         return root
     }
