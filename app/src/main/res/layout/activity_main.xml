@@ -41,7 +41,9 @@
                 android:layout_marginLeft="16dp"
                 android:layout_gravity="center"
                 style="@style/TextAppearance.MaterialComponents.Body2"
-                android:text="Desconectar" />
+                android:text="Desconectar"
+                android:clickable="true"
+                android:onClick="logout"/>
         </LinearLayout>
 
     </com.google.android.material.navigation.NavigationView>
