@@ -1,294 +1,305 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.livingroom.LivingRoomFragment">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/temperature_card"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/humidity_card"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:cardElevation="5dp">
+    <data>
+        <variable name="viewModel"
+            type="com.example.remotehome.ui.livingroom.LivingRoomViewModel"/>
+    </data>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:padding="16dp"
-                android:src="@drawable/ic_brightness_5_black_24dp"
-                android:tint="#ffc046" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/temperature_card"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/humidity_card"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:cardElevation="5dp">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
-                    style="@style/TextAppearance.MaterialComponents.Body2"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.25"
-                    android:gravity="center"
-                    android:text="TEMPERATURA" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_brightness_5_black_24dp"
+                    android:tint="#ffc046" />
 
-                <TextView
-                    style="@style/TextAppearance.MaterialComponents.Headline4"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:gravity="center"
-                    android:text="30ºC" />
+                    android:orientation="vertical">
 
-                <TextView
-                    style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.25"
-                    android:gravity="center"
-                    android:text="SENSOR SALÓN" />
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Body2"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.25"
+                        android:gravity="center"
+                        android:text="TEMPERATURA" />
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Headline4"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
+                        android:gravity="center"
+                        android:text="30ºC" />
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.25"
+                        android:gravity="center"
+                        android:text="SENSOR SALÓN" />
+                </LinearLayout>
+
             </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/humidity_card"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/temperature_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:cardElevation="5dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:padding="16dp"
-                android:src="@drawable/ic_texture_black_24dp"
-                android:tint="@color/colorPrimary" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/humidity_card"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/temperature_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:cardElevation="5dp">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
-                    style="@style/TextAppearance.MaterialComponents.Body2"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.25"
-                    android:gravity="center"
-                    android:text="HUMEDAD" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_texture_black_24dp"
+                    android:tint="@color/colorPrimary" />
 
-                <TextView
-                    style="@style/TextAppearance.MaterialComponents.Headline4"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:gravity="center"
-                    android:text="20%" />
+                    android:orientation="vertical">
 
-                <TextView
-                    style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.25"
-                    android:gravity="center"
-                    android:text="SENSOR SALÓN" />
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Body2"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.25"
+                        android:gravity="center"
+                        android:text="HUMEDAD" />
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Headline4"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
+                        android:gravity="center"
+                        android:text="20%" />
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.25"
+                        android:gravity="center"
+                        android:text="SENSOR SALÓN" />
+                </LinearLayout>
+
             </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/luz_mesa"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/temperature_card"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        app:cardElevation="5dp">
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/luz_mesa"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:padding="16dp"
-                android:src="@drawable/ic_wb_incandescent_black_24dp"
-                android:tint="#F999"/>
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/temperature_card"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            app:cardElevation="5dp">
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:text="LUZ PRINCIPAL"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:text="Consumo : 55 W"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:text="Luminosidad : 300 lm"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:text="Eficiencia : A+"/>
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:checked="true"
-                    android:text="ON/OFF"/>
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_wb_incandescent_black_24dp"
+                    android:tint="#F999"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:text="LUZ PRINCIPAL"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:text="Consumo : 55 W"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:text="Luminosidad : 300 lm"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:text="Eficiencia : A+"/>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/main_light_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="ON/OFF"/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/enchufe_tv"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/luz_mesa"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        app:cardElevation="5dp">
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/enchufe_tv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:padding="16dp"
-                android:src="@drawable/ic_live_tv_black_24dp"
-                android:tint="#c5e1a5"/>
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/luz_mesa"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            app:cardElevation="5dp">
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:text="ENCHUFE TELEVISOR"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:text="Consumo : 165 W"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:text="Eficiencia : A+"/>
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:checked="true"
-                    android:text="ON/OFF"/>
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_live_tv_black_24dp"
+                    android:tint="#c5e1a5"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:text="ENCHUFE TELEVISOR"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:text="Consumo : 165 W"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:text="Eficiencia : A+"/>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/tv_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:checked="true"
+                        android:text="ON/OFF"/>
 
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/aire_acondicionado"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enchufe_tv"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        app:cardElevation="5dp">
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/aire_acondicionado"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:padding="16dp"
-                android:src="@drawable/ic_ac_unit_black_24dp"
-                android:tint="#80deea"/>
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/enchufe_tv"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            app:cardElevation="5dp">
+
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:text="AIRE ACONDICIONADO"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:text="Consumo : 55 W"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:text="Temperatura AC  : 24ºC "/>
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_ac_unit_black_24dp"
+                    android:tint="#80deea"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:text="AIRE ACONDICIONADO"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:text="Consumo : 55 W"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:text="Temperatura AC  : 24ºC "/>
 
-                <com.google.android.material.slider.Slider
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:value="25"
-                    android:valueFrom="17"
-                    android:valueTo="30" />
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/ac_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:value="25"
+                        android:valueFrom="17"
+                        android:valueTo="30"
+                        android:stepSize="0.1"/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

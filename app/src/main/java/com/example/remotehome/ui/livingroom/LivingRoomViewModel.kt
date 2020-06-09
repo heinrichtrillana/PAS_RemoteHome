@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class LivingRoomViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Controles del salón"
-    }
-    val text: LiveData<String> = _text
+    private val _mainLight = MutableLiveData<Boolean>()
+    val mainLight: LiveData<Boolean>
+        get() = _mainLight
 }
