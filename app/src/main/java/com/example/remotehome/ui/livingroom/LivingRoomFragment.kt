@@ -48,16 +48,9 @@ class LivingRoomFragment : Fragment() {
         binding.viewModel = livingRoomViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-
         initDevicesValues()
-        initAmbientValues()
-
 
         return binding.root
-    }
-
-    private fun initAmbientValues(){
-        //Hacer el get de la API del tiempo para simular la temperatura y humedad interior.
     }
 
     private fun initDevicesValues(){
@@ -65,9 +58,9 @@ class LivingRoomFragment : Fragment() {
         db.collection(ROOM).get().addOnSuccessListener { result ->
             for (document in result) {
                 when(document.id){
-                    "ac"        -> binding.acValue.value = (document.data.get("value") as Number).toFloat()
-                    "tv"        -> binding.tvValue.isChecked = document.data.get("value") as Boolean
-                    "mainLight" -> binding.mainLightValue.isChecked = document.data?.get("value") as Boolean
+                    "ac"        -> binding.acValue.value = (document.data["value"] as Number).toFloat()
+                    "tv"        -> binding.tvValue.isChecked = document.data["value"] as Boolean
+                    "mainLight" -> binding.mainLightValue.isChecked = document.data["value"] as Boolean
                     else ->{}
                 }
             }
@@ -79,23 +72,18 @@ class LivingRoomFragment : Fragment() {
         binding.mainLightValue.setOnCheckedChangeListener{ _, isChecked ->
             Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
             updateDB("mainLight", isChecked)
-            //TODO : POST METHOD
         }
 
         binding.tvValue.setOnCheckedChangeListener{ _, isChecked ->
             Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
             updateDB("tv", isChecked)
-            //TODO : POST METHOD
         }
 
-        //binding.acValue.addOnChangeListener();
-        //binding.setValue(33);
 
         binding.acValue.addOnChangeListener{_,value,_ ->
             Toast.makeText(context, value.toString(), Toast.LENGTH_SHORT).show()
             //TODO : Find a debouncer to limit the continous calls
             updateDB("ac", value)
-            //TODO : POST METHOD
         }
 
     }
@@ -120,6 +108,8 @@ class LivingRoomFragment : Fragment() {
             }
 
         //Añadir al documento que guarda el estado actual, el cambio de valor.
+        //Esta parte del codigo deberá ser sustituida por un POST o un PUT en el servidor de la casa
+        //Para accionarlos realmente
         val actual = HashMap<String, Any>()
         actual["value"] = value
         db.collection(ROOM)
