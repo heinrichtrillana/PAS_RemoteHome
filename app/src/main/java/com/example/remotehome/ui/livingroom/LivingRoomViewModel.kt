@@ -6,6 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.remotehome.network.SensorAPI
 import com.example.remotehome.network.SensorProperty
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,28 +21,50 @@ class LivingRoomViewModel : ViewModel() {
     val mainLight: LiveData<Boolean>
         get() = _mainLight
 
-    private val _response = MutableLiveData<String>()
-    val response: LiveData<String>
-        get() = _response
+    private val _temperature = MutableLiveData<Double>()
+    val temperature: LiveData<Double>
+        get() = _temperature
+
+    private val _humidity = MutableLiveData<Double>()
+    val humidity: LiveData<Double>
+        get() = _humidity
+
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(
+        viewModelJob + Dispatchers.Main )
 
 
     init {
         getLivingRoomSensors()
     }
 
+
+
     private fun getLivingRoomSensors(){
-        SensorAPI.retrofitService.getProperties().enqueue(
-            object:Callback<List<SensorProperty>>  {
-                override fun onFailure(call: Call<List<SensorProperty>>, t: Throwable) {
-                    _response.value = "ERROR"
-                    Log.i("API", "ERROR: " + t.message)
-                }
 
-                override fun onResponse(call: Call<List<SensorProperty>>, response: Response<List<SensorProperty>>) {
-                    _response.value =    "Success: ${response.body()?.size} Mars properties retrieved"
-                    Log.i("API", "SIZE : " + response.body()?.size )
-                }
-            })
+        coroutineScope.launch {
+            var getSensorValuesDeferred = SensorAPI.retrofitService.getSensorValues("Madrid,ES")
+            try {
+                var result = getSensorValuesDeferred.await()
 
+                _temperature.value = result.data[0].temperature
+                _humidity.value = result.data[0].relativeHumidity
+
+                Log.i("API", result.data[0].temperature.toString())
+                Log.i("API", result.data[0].relativeHumidity.toString())
+
+
+            } catch (e: Exception) {
+                _temperature.value = 0.0
+                _humidity.value = 0.0
+                Log.i("API", "ERROR: " + e.message)
+            }
+        }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+
 }
