@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "865829851106",
+    "firebase_url": "https://remote-home-11e73.firebaseio.com",
+    "project_id": "remote-home-11e73",
+    "storage_bucket": "remote-home-11e73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865829851106:android:f53763e4d4a5f69d3273bb",
+        "android_client_info": {
+          "package_name": "com.example.remotehome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865829851106-8ssdkfc6idlh2pindmrr6n5ggadchtch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.remotehome",
+            "certificate_hash": "62126c71f5ca4804aa32dbe405e9fd588899ceec"
+          }
+        },
+        {
+          "client_id": "865829851106-qna2d3tk3urcqfffqen6ati467fo37h3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtQuyYg7rroeS8QpeUdsgqImL9c1Yg1s4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865829851106-qna2d3tk3urcqfffqen6ati467fo37h3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
