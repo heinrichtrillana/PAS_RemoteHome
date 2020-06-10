@@ -4,7 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.remotehome.network.SesorsAPI
+import com.example.remotehome.network.SensorAPI
+import com.example.remotehome.network.SensorProperty
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,16 +27,16 @@ class LivingRoomViewModel : ViewModel() {
     }
 
     private fun getLivingRoomSensors(){
-        SesorsAPI.retrofitService.getProperties().enqueue(
-            object: Callback<String> {
-                override fun onFailure(call: Call<String>, t: Throwable) {
+        SensorAPI.retrofitService.getProperties().enqueue(
+            object:Callback<List<SensorProperty>>  {
+                override fun onFailure(call: Call<List<SensorProperty>>, t: Throwable) {
                     _response.value = "ERROR"
                     Log.i("API", "ERROR: " + t.message)
                 }
 
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    _response.value = response.body()
-                    Log.i("API", "" + _response.value )
+                override fun onResponse(call: Call<List<SensorProperty>>, response: Response<List<SensorProperty>>) {
+                    _response.value =    "Success: ${response.body()?.size} Mars properties retrieved"
+                    Log.i("API", "SIZE : " + response.body()?.size )
                 }
             })
 

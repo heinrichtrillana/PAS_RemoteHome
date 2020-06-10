@@ -73,8 +73,12 @@ dependencies {
 
     //Internet access
     implementation "com.squareup.retrofit2:retrofit:2.5.0"
-    implementation "com.squareup.retrofit2:converter-scalars:2.5.0"
-    
+    implementation "com.squareup.retrofit2:converter-moshi:2.5.0"
+
+    //MOSHI - JSON parse
+    implementation "com.squareup.moshi:moshi:1.8.0"
+    implementation "com.squareup.moshi:moshi-kotlin:1.8.0"
+
 
 
 
